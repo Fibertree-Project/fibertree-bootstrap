@@ -1,7 +1,14 @@
-# Fibertree prelude
+# Fibertree bootstrap code
 
-This Python package provides boilerplate code to intiialize a fibertree
-environment in a Jypter notebook either in Jupyter lab or Google Colab.
+This Python package provides boilerplate code to intiialize a
+[fibertree](https://github.com/Fibertree-Project/fibertree) Python
+environment in a Jupyter notebook either in Jupyter lab or Google Colab.
+
+
+## Demonstration
+
+To see an example of the use of this code in Google Colab click: 
+[here](https://colab.research.google.com/github/Fibertree-Project/fibertree-bootstrap/blob/main/notebooks/sample_notebook.ipynb)
 
 
 ## Usage

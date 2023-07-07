@@ -1,4 +1,14 @@
-""" IPython bootstrap code """
+"""IPython fibertree bootstrap code
+
+Thie module will bootstrap an environment for running fibertree code
+in a Jupyter notebook, including downloading and installing the
+fibertree Python package if it is now available, e.g., in a Google
+Colab environment.  It also impoorts a number of useful packages for
+that environment and defines some methods that will bootstrap the
+enviroment and also download some data files used by various fibertree
+notebooks.
+
+"""
 
 #
 # Startup...
@@ -120,6 +130,35 @@ displayCanvas = FTD.displayCanvas
 def fibertree_bootstrap(style="tree",
                         animation="movie",
                         logger=False):
+    """A public method to bootstrap a fibertree environment in a
+    Jupyter notebook.
+
+    This method will initialize some standard data structures
+    primarily for displaying fibertrees and fibertree-based
+    animations.
+
+    It also creates a dialog to select the global default for display
+    and animation styles. Those styles can be overwritten in
+    individual calls to `displayTensor()` and `createCanvas()`.
+
+    Parameters
+    ----------
+
+    style: string, default="tree"
+        A display style. One of: tree, uncompressed or tree+uncompressed
+
+    animation: string, default="movie"
+        A animation sytle. One of: movie, spacetime or none
+
+    logger: bool, default=False
+        Enable diaglog to control log levels in the fibertree code
+
+    Notes
+    -----
+
+    None.
+
+    """
 
     global NB
     global FTD
