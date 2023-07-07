@@ -14,7 +14,7 @@ To use the package put the following in the first cell our your notebook:
 import pkgutil
 
 if 'fibertree_bootstrap' not in [pkg.name for pkg in pkgutil.iter_modules()]:
-  !pip  install git+https://github.com/Fibertree-Project/fibertree-bootstrap --quiet
+  !python3 -m pip  install git+https://github.com/Fibertree-Project/fibertree-bootstrap --quiet
 
 # End - startup boilerplate code
 

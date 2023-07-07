@@ -54,6 +54,7 @@ coverage.xml
 
 # Application-specific ignores
 
-
 tmp/
+notebooks/tmp/*.mp4
+notebooks/.ipynb_checkpoints
 
