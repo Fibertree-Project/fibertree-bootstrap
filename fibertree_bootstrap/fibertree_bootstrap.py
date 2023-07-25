@@ -1,12 +1,18 @@
 """IPython fibertree bootstrap code
 
-Thie module will bootstrap an environment for running fibertree code
+This module will bootstrap an environment for running fibertree code
 in a Jupyter notebook, including downloading and installing the
 fibertree Python package if it is now available, e.g., in a Google
 Colab environment.  It also impoorts a number of useful packages for
 that environment and defines some methods that will bootstrap the
 enviroment and also download some data files used by various fibertree
 notebooks.
+
+One of the variables this package creates is `FTD`, which is a
+`DisplayTensor()` object. It also creates some aliases to method calls
+on the `FTD` object, specifically `displayTensor()`, `displayGraph()`,
+`createCanvas()` and `displayCanvas()`. See the documentation for
+`DisplayTensor()` for more information.
 
 """
 
@@ -181,7 +187,30 @@ def fibertree_bootstrap(style="tree",
 # Utility function to download data for use in the notebook environment
 #
 def download_github_directory(user, repo, directory, verbose=False):
-    """ Download files from a github repo's directory """
+    """ Download files from a github repo's directory
+
+    Parameters
+    ----------
+
+    user: string
+        The name of a github user or project
+
+    repo: string
+        The name of a github repo
+
+    directory: string
+        The path name of a directory in the repo
+
+    verbose: Bool, default=False
+        Print more progress information
+
+    Notes
+    -----
+
+    None.
+
+
+    """
 
     api_url = f"https://api.github.com/repos/{user}/{repo}/contents/{directory}"
     response = requests.get(api_url)
@@ -205,7 +234,29 @@ def download_github_directory(user, repo, directory, verbose=False):
 
 
 def download_data(verbose=True):
-    """ Download fibertree data (if not already available) """
+    """Download fibertree data files from the fibertree-notebooks repo
+
+    Put the data files in `./data', but skips the download if the
+    directory `data/` exists somewhere nearby.
+
+    Parameters
+    ----------
+
+    verbose: Bool, default=False
+        Print more progress information
+
+    Returns
+    -------
+
+    path: Path
+        The path to the data directory
+
+    Notes
+    -----
+
+    None.
+
+    """
 
     for data_dir in ["../../data", "../data", "./data"]:
         if os.path.exists(data_dir):
@@ -227,7 +278,26 @@ def download_data(verbose=True):
 # Create datafile name (for backwards compatibility)
 #
 def datafileName(filename):
-    """ Get fibertree data file """
+    """ Construct fibertree data filename including directory
+
+    Parameters
+    ----------
+
+    filename, string
+        The name of a fibertree data file (without full path)
+
+    Returns
+    -------
+
+    path: Path
+        The full path to the data file
+
+    Notes
+    -----
+
+    Exists for backwards compatibility.
+
+    """
 
     data_dir = download_data(verbose=False)
 

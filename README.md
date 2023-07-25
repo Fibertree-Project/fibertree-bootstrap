@@ -26,6 +26,7 @@ if 'fibertree_bootstrap' not in [pkg.name for pkg in pkgutil.iter_modules()]:
 # End - startup boilerplate code
 
 from fibertree_bootstrap import *
+
 fibertree_bootstrap(style="tree", animation="movie")
 ```
 
