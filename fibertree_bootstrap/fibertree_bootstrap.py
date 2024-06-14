@@ -8,6 +8,10 @@ that environment and defines some methods that will bootstrap the
 enviroment and also download some data files used by various fibertree
 notebooks.
 
+If the module needs to install the fibertree module, it checks for the
+existence of the environment variable FIBERTREE_URL and installs from
+there, otherwise it uses a default URL.
+
 One of the variables this package creates is `FTD`, which is a
 `DisplayTensor()` object. It also creates some aliases to method calls
 on the `FTD` object, specifically `displayTensor()`, `displayGraph()`,
@@ -89,10 +93,17 @@ try:
     print(f"The {module_name} module is already installed and available to import")
 except ImportError:
     print(f"The {module_name} module is not available. Installing...")
+
+    # Check enviroment variable for repo URL
+    if 'FIBERREE_URL' in os.environ:
+        url = os.environ['FIBERTREE_URL']
+    else:
+        url = 'git+https://github.com/Fibertree-Project/fibertree',
+
     # Define the pip command to execute
     pip_command = ['pip',
                    'install',
-                   'git+https://github.com/Fibertree-Project/fibertree',
+                   url,
                    '--quiet']
     # Execute the pip command
     subprocess.call(pip_command)
