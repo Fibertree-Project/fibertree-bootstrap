@@ -95,18 +95,19 @@ except ImportError:
     print(f"The {module_name} module is not available. Installing...")
 
     # Check enviroment variable for repo URL
-    if 'FIBERREE_URL' in os.environ:
+    if 'FIBERTREE_URL' in os.environ:
         url = os.environ['FIBERTREE_URL']
     else:
-        url = 'git+https://github.com/Fibertree-Project/fibertree',
+        url = 'git+https://github.com/Fibertree-Project/fibertree'
 
     # Define the pip command to execute
     pip_command = ['pip',
                    'install',
                    url,
                    '--quiet']
+
     # Execute the pip command
-    subprocess.call(pip_command)
+    subprocess.run(pip_command, check=True, env=os.environ)
 
 
 from fibertree import Payload, Fiber, CoordPayload, Tensor
